@@ -8,19 +8,18 @@ MonkeyTypeCLI is a command-line interface typing test written in Python using th
 - **Randomized Texts**: Each typing test presents a randomly selected text, ensuring variety and unpredictability in your practice sessions.
 - **WPM Calculation**: Get instant feedback on your typing speed with accurate Words Per Minute (WPM) calculations.
 - **Error Tracking**: Monitor your typing accuracy by keeping track of the number of errors made during each test.
-- **Customizable Options**: Tailor your typing experience by adjusting settings such as test duration and difficulty level.
 
 ## Prerequisites
 
 - Python 3.x
-- Curses library (usually included in Python standard library)
+- Curses library (included in Python standard library, except for windows. If you're on Windows, do pip install windows-curses.
 
 ## Installation
 
 1. Clone the repository:
 
     ```bash
-    git clone https://github.com/your-username/MonkeyTypeCLI.git
+    git clone https://github.com/5pectral/MonkeyTypeCLI.git
     ```
 
 2. Navigate to the project directory:
@@ -32,12 +31,12 @@ MonkeyTypeCLI is a command-line interface typing test written in Python using th
 3. Run MonkeyTypeCLI:
 
     ```bash
-    python monkeytype.py
+    python main.py
     ```
 
 ## Usage
 
-1. Launch the application by running the `monkeytype.py` script.
+1. Launch the application by running the `main.py` script.
 2. Follow the on-screen instructions to start a typing test.
 3. Type the displayed text as accurately and quickly as possible.
 4. Receive instant feedback on your WPM and error count upon completion.
