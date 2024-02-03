@@ -3,12 +3,18 @@ from curses import wrapper
 import time
 import random
 
+theme = 1
+
 def start_screen(stdscr):
     stdscr.clear()
     stdscr.addstr("Welcome to MonkeyType CLI")
-    stdscr.addstr("\nPress any key to begin.")
+    stdscr.addstr("\nPress any key to continue")
     stdscr.refresh()
     stdscr.getkey()
+
+def options():
+    theme = int(input())
+    return theme
 
 def display_text(stdscr, target, current, wpm=0):
     stdscr.addstr(target)
@@ -16,7 +22,7 @@ def display_text(stdscr, target, current, wpm=0):
 
     for i, char in enumerate(current):
         correct_char = target[i]
-        color = curses.color_pair(1)
+        color = curses.color_pair(theme)
         if char != correct_char:
             color = curses.color_pair(2)
         stdscr.addstr(0, i, char, color)
@@ -28,8 +34,6 @@ def load_text():
         for i in range(0, 15):
             target.append(random.choice(lines).strip())
         return " ".join(target).strip()
-
-
 
 def wpm_test(stdscr):
     target_text = load_text()
@@ -64,19 +68,19 @@ def wpm_test(stdscr):
         elif len(current_text) < len(target_text):
             current_text.append(key)
 
-
 def main(stdscr):
     curses.init_pair(1, curses.COLOR_YELLOW, curses.COLOR_BLACK)
     curses.init_pair(2, curses.COLOR_RED, curses.COLOR_BLACK)
     curses.init_pair(3, curses.COLOR_WHITE, curses.COLOR_BLACK)
-
+    curses.init_pair(4, curses.COLOR_MAGENTA, curses.COLOR_BLACK)
+    curses.init_pair(5, curses.COLOR_GREEN, curses.COLOR_BLACK)
+    
     start_screen(stdscr)
     while True:
         wpm_test(stdscr)
-        stdscr.addstr(2, 0, "Well done, you've completed the test. Press any key to continue")
+        stdscr.addstr(2, 0, "Well done, you've completed the test. Press any key to continue, or press escape to close.")
         key = stdscr.getkey()
         if ord(key) == 27:
             break
-
 
 wrapper(main)
